@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Humanitarian Arrivals to the U.S. and Adjustment of Status Over Time</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="data.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#0f1117; --surface:#1a1d27; --surface2:#22263a; --border:#2e3350;
+      --accent1:#4f8ef7; --accent2:#34d399; --accent3:#f59e0b; --accent4:#f87171;
+      --accent5:#a78bfa; --text:#e2e8f0; --muted:#8892a4; --radius:12px;
+      --dem:#4f8ef7; --rep:#f87171;
+    }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,sans-serif; font-size:14px; line-height:1.6; min-height:100vh; }
+
+    header { background:linear-gradient(135deg,#1a1d27 0%,#0f1117 100%); border-bottom:1px solid var(--border); padding:20px 32px; display:flex; align-items:center; gap:16px; position:sticky; top:0; z-index:100; }
+    .header-flag { font-size:2rem; }
+    .header-text h1 { font-size:1.15rem; font-weight:700; color:var(--text); line-height:1.3; }
+    .header-text p  { font-size:0.78rem; color:var(--muted); }
+    .header-right { margin-left:auto; display:flex; align-items:center; gap:10px; }
+    .header-badge { background:var(--surface2); border:1px solid var(--border); border-radius:20px; padding:4px 14px; font-size:0.75rem; color:var(--accent2); white-space:nowrap; }
+
+    nav { background:var(--surface); border-bottom:1px solid var(--border); padding:0 32px; display:flex; gap:4px; overflow-x:auto; }
+    nav button { background:none; border:none; color:var(--muted); cursor:pointer; padding:14px 18px; font-size:0.85rem; font-weight:500; border-bottom:2px solid transparent; white-space:nowrap; transition:color .2s,border-color .2s; }
+    nav button:hover { color:var(--text); }
+    nav button.active { color:var(--accent1); border-bottom-color:var(--accent1); }
+
+    main { padding:28px 32px; max-width:1400px; margin:0 auto; }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+
+    .section-title { font-size:1.1rem; font-weight:600; color:var(--text); margin-bottom:20px; display:flex; align-items:center; gap:8px; }
+    .section-title::after { content:''; flex:1; height:1px; background:var(--border); }
+
+    .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-bottom:28px; }
+    .kpi-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; position:relative; overflow:hidden; }
+    .kpi-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+    .kpi-card.c1::before{background:var(--accent1);} .kpi-card.c2::before{background:var(--accent2);}
+    .kpi-card.c3::before{background:var(--accent3);} .kpi-card.c4::before{background:var(--accent4);}
+    .kpi-card.c5::before{background:var(--accent5);}
+    .kpi-label { font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+    .kpi-value { font-size:1.8rem; font-weight:700; margin:6px 0 2px; }
+    .kpi-sub   { font-size:0.72rem; color:var(--muted); }
+    .kpi-card.c1 .kpi-value{color:var(--accent1);} .kpi-card.c2 .kpi-value{color:var(--accent2);}
+    .kpi-card.c3 .kpi-value{color:var(--accent3);} .kpi-card.c4 .kpi-value{color:var(--accent4);}
+    .kpi-card.c5 .kpi-value{color:var(--accent5);}
+
+    .chart-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(480px,1fr)); gap:20px; margin-bottom:28px; }
+    .chart-grid.single { grid-template-columns:1fr; }
+    .chart-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; }
+    .chart-card h3 { font-size:0.9rem; font-weight:600; color:var(--text); margin-bottom:12px; }
+    .chart-card h3 span { color:var(--muted); font-weight:400; font-size:0.8rem; }
+    .chart-wrap { position:relative; height:280px; }
+    .chart-wrap.tall { height:360px; }
+
+    .table-wrap { overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; font-size:0.82rem; }
+    thead th { background:var(--surface2); color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.72rem; padding:10px 14px; text-align:left; border-bottom:1px solid var(--border); }
+    tbody tr { border-bottom:1px solid var(--border); transition:background .15s; }
+    tbody tr:hover { background:var(--surface2); }
+    tbody td { padding:10px 14px; }
+    .num { text-align:right; font-variant-numeric:tabular-nums; }
+    .bar-cell { display:flex; align-items:center; gap:8px; }
+    .mini-bar { height:6px; border-radius:3px; min-width:4px; }
+
+    .insight { background:var(--surface2); border-left:3px solid var(--accent1); border-radius:0 var(--radius) var(--radius) 0; padding:14px 18px; margin-bottom:16px; font-size:0.83rem; color:var(--muted); line-height:1.7; }
+    .insight strong { color:var(--text); }
+    .insight.i2{border-left-color:var(--accent2);} .insight.i3{border-left-color:var(--accent3);}
+    .insight.i4{border-left-color:var(--accent4);} .insight.i5{border-left-color:var(--accent5);}
+    .insight.last { margin-bottom:24px; }
+
+    /* Asylum explainer boxes */
+    .explainer-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+    .explainer-box { background:var(--surface2); border:1px solid var(--border); border-radius:var(--radius); padding:18px; }
+    .explainer-box h4 { font-size:0.85rem; font-weight:700; margin-bottom:8px; }
+    .explainer-box p  { font-size:0.82rem; color:var(--muted); line-height:1.65; }
+    .explainer-box.aff h4 { color:var(--accent5); }
+    .explainer-box.def h4 { color:#fb923c; }
+
+    /* Refugee spotlight card */
+    .spotlight { background:var(--surface2); border:1px solid var(--accent2); border-radius:var(--radius); padding:20px; margin-bottom:20px; display:grid; grid-template-columns:auto 1fr; gap:20px; align-items:start; }
+    .spotlight-icon { font-size:2.8rem; line-height:1; }
+    .spotlight h4 { font-size:0.95rem; font-weight:700; color:var(--accent2); margin-bottom:6px; }
+    .spotlight p  { font-size:0.82rem; color:var(--muted); line-height:1.7; }
+
+    /* Party toggle */
+    .chart-controls { display:flex; align-items:center; gap:10px; margin-bottom:12px; flex-wrap:wrap; }
+    .toggle-btn { background:var(--surface2); border:1px solid var(--border); border-radius:6px; color:var(--muted); cursor:pointer; font-size:0.78rem; padding:5px 12px; transition:all .2s; }
+    .toggle-btn.active-dem { background:rgba(79,142,247,.15); border-color:var(--dem); color:var(--dem); }
+    .toggle-btn.active-rep { background:rgba(248,113,113,.15); border-color:var(--rep); color:var(--rep); }
+    .toggle-btn:hover { border-color:var(--text); color:var(--text); }
+
+    /* Asylum country filter */
+    .filter-row { display:flex; align-items:center; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+    .filter-row label { font-size:0.8rem; color:var(--muted); }
+    .filter-row select { background:var(--surface2); border:1px solid var(--border); border-radius:6px; color:var(--text); font-size:0.82rem; padding:6px 10px; cursor:pointer; }
+    .filter-row select:focus { outline:none; border-color:var(--accent1); }
+
+    /* LPR refugee highlight */
+    .refugee-share-bar { background:var(--surface2); border:1px solid var(--border); border-radius:var(--radius); padding:16px 20px; margin-bottom:20px; }
+    .refugee-share-bar h4 { font-size:0.82rem; color:var(--muted); margin-bottom:10px; text-transform:uppercase; letter-spacing:.04em; }
+    .share-track { background:var(--border); border-radius:4px; height:22px; position:relative; overflow:hidden; }
+    .share-fill-ref { background:var(--accent3); height:100%; border-radius:4px; display:flex; align-items:center; padding-left:8px; font-size:0.75rem; font-weight:600; color:#000; white-space:nowrap; }
+    .share-legend { display:flex; gap:16px; margin-top:8px; font-size:0.75rem; color:var(--muted); }
+    .share-legend span { display:flex; align-items:center; gap:5px; }
+    .swatch { width:10px; height:10px; border-radius:2px; display:inline-block; }
+
+    .export-btn { display:inline-flex; align-items:center; gap:7px; background:var(--surface2); border:1px solid var(--border); border-radius:8px; color:var(--text); cursor:pointer; font-size:0.8rem; font-weight:500; padding:8px 16px; transition:background .2s,border-color .2s; }
+    .export-btn:hover { background:#2e3350; border-color:var(--accent1); color:var(--accent1); }
+    .export-btn svg { flex-shrink:0; }
+    .export-btn.loading { opacity:0.6; pointer-events:none; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .spin { animation:spin 0.8s linear infinite; display:inline-block; }
+
+    footer { text-align:center; padding:24px; color:var(--muted); font-size:0.75rem; border-top:1px solid var(--border); margin-top:40px; }
+
+    @media (max-width:700px) {
+      header { padding:16px; }
+      main   { padding:16px; }
+      nav    { padding:0 16px; }
+      .chart-grid { grid-template-columns:1fr; }
+      .explainer-grid { grid-template-columns:1fr; }
+      .spotlight { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-flag">🇺🇸</div>
+  <div class="header-text">
+    <h1>Humanitarian Arrivals to the U.S. and Adjustment of Status Over Time</h1>
+    <p>Refugees · Asylum · Legal Permanent Residents · Naturalizations</p>
+  </div>
+  <div class="header-right">
+    <div class="header-badge">Source: DHS / OHS Statistics</div>
+    <button class="export-btn" id="exportPDF" title="Export current tab to PDF">
+      <svg id="exportIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+        <line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/>
+      </svg>
+      <span id="exportLabel">Export PDF</span>
+    </button>
+  </div>
+</header>
+
+<nav id="nav">
+  <button class="active" data-tab="overview">Overview of Arrivals and Adjustment of Status</button>
+  <button data-tab="refugees">Refugees</button>
+  <button data-tab="asylum">Asylum</button>
+  <button data-tab="lpr">Legal Permanent Residents</button>
+  <button data-tab="naturalization">Naturalizations</button>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- OVERVIEW TAB                                                               -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<section id="overview" class="tab-panel active">
+  <div class="section-title">FY 2022 At a Glance</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card c1">
+      <div class="kpi-label">Legal Permanent Residents</div>
+      <div class="kpi-value" id="kpi-lpr">—</div>
+      <div class="kpi-sub">Green cards issued</div>
+    </div>
+    <div class="kpi-card c2">
+      <div class="kpi-label">Naturalizations</div>
+      <div class="kpi-value" id="kpi-nat">—</div>
+      <div class="kpi-sub">New U.S. citizens</div>
+    </div>
+    <div class="kpi-card c3">
+      <div class="kpi-label">Refugee Arrivals</div>
+      <div class="kpi-value" id="kpi-ref">—</div>
+      <div class="kpi-sub">~30% of 2016 peak · Admitted under Refugee Act</div>
+    </div>
+    <div class="kpi-card c4">
+      <div class="kpi-label">Asylum Granted</div>
+      <div class="kpi-value" id="kpi-asy">—</div>
+      <div class="kpi-sub">Affirmative + defensive combined</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Key Trends:</strong> FY 2022 saw a broad rebound in immigration after the combined impact of
+    <strong>COVID-19 travel restrictions</strong> and the <strong>Trump administration's</strong> historically low refugee ceiling of 18,000.
+    Legal permanent residents rose to <strong>1,018,349</strong> — up 37% from the FY 2020 low — and naturalizations
+    reached <strong>969,380</strong>, the highest since 2008. Refugee admissions recovered to <strong>25,519</strong> under the
+    Biden administration's raised ceiling of 125,000, but remain at roughly <strong>30% of the 2016 peak</strong> of 84,989,
+    reflecting both processing backlogs and the lasting structural impact of years of reduced capacity.
+    Asylum grants surged to <strong>36,615</strong>, driven by a sharp rise in defensive court cases (22,481) —
+    a direct consequence of the growing immigration court backlog built up during the prior administration.
+  </div>
+  <div class="insight i3 last">
+    <strong>Employment-Based Green Cards Surge:</strong> Employment-based LPRs hit a record <strong>270,284</strong> in FY 2022 —
+    nearly double FY 2019 — due to a one-time reallocation of unused family-preference visa numbers.
+    Asia now accounts for the largest share of both LPRs and new citizens, with India alone contributing
+    <strong>127,012</strong> green cards and <strong>65,960</strong> naturalizations in FY 2022.
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Persons who Received Green Cards by Year <span>2000–2022</span></h3>
+      <div class="chart-wrap"><canvas id="overviewLPR"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Persons who Received Citizenship by Year <span>2000–2022</span></h3>
+      <div class="chart-wrap"><canvas id="overviewNat"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Refugee Arrivals <span>1980–2022</span></h3>
+      <div class="chart-wrap"><canvas id="overviewRef"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Asylum Granted <span>1990–2022</span></h3>
+      <div class="chart-wrap"><canvas id="overviewAsy"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- REFUGEES TAB                                                               -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<section id="refugees" class="tab-panel">
+  <div class="section-title">Refugee Arrivals</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card c3">
+      <div class="kpi-label">FY 2022 Arrivals</div>
+      <div class="kpi-value" style="color:var(--accent3)">25,519</div>
+      <div class="kpi-sub">+122% vs FY 2021</div>
+    </div>
+    <div class="kpi-card c1">
+      <div class="kpi-label">Peak Year (2016)</div>
+      <div class="kpi-value" style="color:var(--accent1)">84,989</div>
+      <div class="kpi-sub">Highest since 1993</div>
+    </div>
+    <div class="kpi-card c4">
+      <div class="kpi-label">Post-9/11 Low (2002)</div>
+      <div class="kpi-value" style="color:var(--accent4)">26,785</div>
+      <div class="kpi-sub">Dropped 75% from 2001</div>
+    </div>
+    <div class="kpi-card c2">
+      <div class="kpi-label">Top Origin 2022</div>
+      <div class="kpi-value" style="color:var(--accent2);font-size:1.1rem">DR Congo</div>
+      <div class="kpi-sub">7,742 arrivals</div>
+    </div>
+    <div class="kpi-card c5">
+      <div class="kpi-label">Economic Contribution</div>
+      <div class="kpi-value" style="color:var(--accent5);font-size:1rem">$63B+</div>
+      <div class="kpi-sub">Refugees contributed over $63B in tax revenue in their first 8 years (HHS, 2017)</div>
+    </div>
+  </div>
+
+  <!-- Refugee spotlight -->
+  <div class="spotlight">
+    <div class="spotlight-icon">🌟</div>
+    <div>
+      <h4>Spotlight: Hamdi Ulukaya — Founder of Chobani</h4>
+      <p>
+        Hamdi Ulukaya arrived in the U.S. from Turkey in 1994 and founded <strong>Chobani</strong>, now the
+        best-selling Greek yogurt brand in America. His company employs over <strong>2,000 people</strong> —
+        many of them refugees — at plants in New York and Idaho. Ulukaya has pledged 10% of Chobani's equity
+        to refugee causes and is a leading voice for refugee employment. His story illustrates a consistent
+        pattern: refugees who are given the opportunity to work become taxpayers, employers, and community
+        builders. Studies show refugees reach income parity with native-born Americans within <strong>8 years</strong>
+        of arrival and contribute more in taxes over their lifetimes than they receive in benefits.
+      </p>
+    </div>
+  </div>
+
+  <div class="insight i3">
+    <strong>Africa Dominates Recent Arrivals:</strong> Since 2013, Africa has been the fastest-growing source region.
+    In FY 2016 — the peak year — Africa contributed <strong>31,640</strong> arrivals (37% of total).
+    The Democratic Republic of Congo alone accounted for <strong>7,742</strong> arrivals in FY 2022, driven by
+    ongoing conflict in the eastern provinces.
+  </div>
+  <div class="insight i4 last">
+    <strong>Policy Ceiling vs. Processing Capacity:</strong> The drop from <strong>84,989</strong> in FY 2016 to <strong>22,405</strong> in FY 2018
+    directly reflects the Trump administration's reduction of the presidential ceiling from 110,000 to 45,000,
+    then to 18,000. The FY 2022 ceiling was raised to 125,000 by the Biden administration, but actual arrivals
+    of 25,519 show that years of reduced investment in processing infrastructure cannot be reversed overnight.
+  </div>
+
+  <div class="chart-grid single">
+    <div class="chart-card">
+      <h3>Refugee Arrivals by Year <span>1980–2022</span></h3>
+      <div class="chart-controls">
+        <span style="font-size:0.78rem;color:var(--muted)">Overlay administration:</span>
+        <button class="toggle-btn" id="toggleDem">🔵 Democrat</button>
+        <button class="toggle-btn" id="toggleRep">🔴 Republican</button>
+        <span style="font-size:0.75rem;color:var(--muted);margin-left:4px" id="partyInsight"></span>
+      </div>
+      <div class="chart-wrap tall"><canvas id="refTimeline"></canvas></div>
+    </div>
+  </div>
+
+  <div class="insight i2 last" id="bipartisanInsight">
+    <strong>A Bipartisan Legacy — Until 2017:</strong> From 1980 through 2016, refugee resettlement was broadly
+    bipartisan. Both Republican and Democratic administrations maintained admissions above <strong>50,000</strong> per year,
+    with Reagan admitting over <strong>200,000</strong> in 1980 and Bush Jr. rebuilding the program after 9/11 to over
+    <strong>70,000</strong> by 2008. The sharp break came in 2017, when the ceiling was cut to its lowest level since
+    the Refugee Act was passed. Toggle the shading above to see how arrivals tracked with each administration.
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Arrivals by Region <span>2013–2022</span></h3>
+      <div class="chart-wrap"><canvas id="refRegion"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Top 10 Nationalities <span>FY 2022</span></h3>
+      <div class="chart-wrap"><canvas id="refNat"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:20px">
+    <h3>Top Nationalities — Detailed Table <span>FY 2022</span></h3>
+    <div class="table-wrap"><table id="refTable"></table></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- ASYLUM TAB                                                                 -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<section id="asylum" class="tab-panel">
+  <div class="section-title">Asylum Cases Granted</div>
+
+  <!-- Plain-language explainers -->
+  <div class="explainer-grid">
+    <div class="explainer-box aff">
+      <h4>✅ What is Affirmative Asylum?</h4>
+      <p>
+        Someone who is <strong>not in removal proceedings</strong> can proactively apply for asylum by filing a form
+        with U.S. Citizenship and Immigration Services (USCIS). An asylum officer interviews them and decides
+        whether they qualify. Think of it as <em>asking for protection before anyone has tried to deport you</em>.
+        If approved, you can stay in the U.S. and eventually apply for a green card.
+      </p>
+    </div>
+    <div class="explainer-box def">
+      <h4>⚖️ What is Defensive Asylum?</h4>
+      <p>
+        Someone who is <strong>already in removal (deportation) proceedings</strong> can raise asylum as a
+        <em>defense</em> in immigration court — essentially saying "I can't be sent back because I would be
+        persecuted." A judge decides the case. This process is slower and more adversarial. The sharp rise
+        in defensive cases since 2018 reflects a growing backlog of people in court proceedings.
+      </p>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card c4">
+      <div class="kpi-label">Total Granted FY 2022</div>
+      <div class="kpi-value" style="color:var(--accent4)">36,615</div>
+      <div class="kpi-sub">+120% vs FY 2021</div>
+    </div>
+    <div class="kpi-card c5">
+      <div class="kpi-label">Affirmative (USCIS)</div>
+      <div class="kpi-value" style="color:var(--accent5)">14,134</div>
+      <div class="kpi-sub">+53% vs FY 2021</div>
+    </div>
+    <div class="kpi-card c4" style="--accent4:#fb923c">
+      <div class="kpi-label">Defensive (Courts)</div>
+      <div class="kpi-value" style="color:#fb923c">22,481</div>
+      <div class="kpi-sub">+203% vs FY 2021</div>
+    </div>
+    <div class="kpi-card c1">
+      <div class="kpi-label">Top Origin 2022</div>
+      <div class="kpi-value" style="color:var(--accent1);font-size:1.1rem">Venezuela</div>
+      <div class="kpi-sub">2,228 affirmative grants</div>
+    </div>
+  </div>
+
+  <!-- Country filter -->
+  <div class="filter-row">
+    <label for="asyCountryFilter">🔍 Filter charts by country of origin:</label>
+    <select id="asyCountryFilter">
+      <option value="all">All Countries</option>
+    </select>
+    <span id="asyFilterNote" style="font-size:0.75rem;color:var(--muted)"></span>
+  </div>
+
+  <div class="insight i5">
+    <strong>Defensive Cases Now Dominate:</strong> For the first time in the data series, defensive grants
+    (<strong>22,481</strong>) exceeded affirmative grants (<strong>14,134</strong>) by a ratio of nearly 3:2 in FY 2022.
+    This reflects a massive immigration court backlog — individuals in removal proceedings who might otherwise
+    have applied affirmatively are instead forced to defend themselves in court.
+  </div>
+  <div class="insight i4 last">
+    <strong>Latin America Surge:</strong> Venezuela emerged as the top affirmative asylum origin in FY 2022 with
+    <strong>2,228</strong> grants, up from near zero a decade ago. Combined, Venezuela, Colombia, Guatemala,
+    El Salvador, and Honduras accounted for roughly <strong>35%</strong> of all affirmative grants — a dramatic
+    shift from the China-dominated pattern of the early 2010s.
+  </div>
+
+  <div class="chart-grid single">
+    <div class="chart-card">
+      <h3>Asylum Granted — Affirmative vs Defensive <span>1990–2022</span></h3>
+      <div class="chart-wrap tall"><canvas id="asyTimeline"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Top 10 Nationalities — Affirmative Asylum <span>FY 2022</span></h3>
+      <div class="chart-wrap"><canvas id="asyNat"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Affirmative vs Defensive Split <span>FY 2022</span></h3>
+      <div class="chart-wrap"><canvas id="asyPie"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:20px">
+    <h3>Asylum Granted — Historical Table <span>1990–2022</span></h3>
+    <div class="table-wrap"><table id="asyTable"></table></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- LPR TAB                                                                    -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<section id="lpr" class="tab-panel">
+  <div class="section-title">Legal Permanent Residents (Green Cards)</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card c2">
+      <div class="kpi-label">Adjustments of Status</div>
+      <div class="kpi-value" style="color:var(--accent2)">552,631</div>
+      <div class="kpi-sub">People already in the U.S. who received a green card</div>
+    </div>
+    <div class="kpi-card c3">
+      <div class="kpi-label">New Arrivals</div>
+      <div class="kpi-value" style="color:var(--accent3)">465,718</div>
+      <div class="kpi-sub">Admitted from abroad with green card</div>
+    </div>
+    <div class="kpi-card c4">
+      <div class="kpi-label">Top Country</div>
+      <div class="kpi-value" style="color:var(--accent4);font-size:1.1rem">Mexico</div>
+      <div class="kpi-sub">138,772 LPRs in FY 2022</div>
+    </div>
+  </div>
+
+  <!-- Refugee share highlight -->
+  <div class="refugee-share-bar">
+    <h4>How small is the refugee share of green cards?</h4>
+    <div class="share-track">
+      <div class="share-fill-ref" style="width:8.2%">8.2% Refugees &amp; Asylees</div>
+    </div>
+    <div class="share-legend">
+      <span><span class="swatch" style="background:var(--accent3)"></span>Refugees &amp; Asylees — 83,082 of 1,018,349 (8.2%)</span>
+      <span><span class="swatch" style="background:var(--border)"></span>All other categories — 935,267 (91.8%)</span>
+    </div>
+    <p style="font-size:0.78rem;color:var(--muted);margin-top:8px">
+      Despite the public debate around refugee admissions, refugees and asylees who adjust to LPR status
+      represent just <strong>8.2%</strong> of all green cards issued in FY 2022. Immediate relatives of U.S. citizens
+      alone account for <strong>42%</strong> — more than five times the refugee share.
+    </p>
+  </div>
+
+  <div class="insight i1" style="border-left-color:var(--accent1)">
+    <strong>Employment-Based Admissions Surge:</strong> Employment-based LPRs reached <strong>270,284</strong> in FY 2022 —
+    the highest on record and nearly double FY 2019. This spike reflects a one-time reallocation of unused
+    family-preference visa numbers. The EB-2 category alone jumped to <strong>109,081</strong>, driven heavily by
+    Indian-born applicants (96,335 of that total).
+  </div>
+  <div class="insight i3 last">
+    <strong>Immediate Relatives Remain the Largest Category:</strong> Spouses, children, and parents of U.S. citizens
+    accounted for <strong>428,268</strong> green cards (42%) in FY 2022. Family-sponsored preference admissions
+    collapsed to just <strong>65,690</strong> in FY 2021 due to COVID-era shutdowns, then partially rebounded to
+    <strong>166,041</strong> in FY 2022 — still below pre-pandemic levels.
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Persons who Received Green Cards by Year <span>2000–2022</span></h3>
+      <div class="chart-wrap"><canvas id="lprTimeline"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Class of Admission <span>2013–2022</span></h3>
+      <div class="chart-wrap"><canvas id="lprClass"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>LPR by Region of Birth <span>2013–2022</span></h3>
+      <div class="chart-wrap"><canvas id="lprRegion"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Top 10 Countries of Birth <span>FY 2022</span></h3>
+      <div class="chart-wrap"><canvas id="lprCountry"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:20px">
+    <h3>Top States of Residence <span>FY 2022</span></h3>
+    <div class="table-wrap"><table id="lprStateTable"></table></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- NATURALIZATION TAB                                                         -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<section id="naturalization" class="tab-panel">
+  <div class="section-title">Naturalizations (New U.S. Citizens)</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card c2">
+      <div class="kpi-label">Total FY 2022</div>
+      <div class="kpi-value" style="color:var(--accent2)">969,380</div>
+      <div class="kpi-sub">Highest since FY 2008</div>
+    </div>
+    <div class="kpi-card c1">
+      <div class="kpi-label">All-Time Peak (1996)</div>
+      <div class="kpi-value" style="color:var(--accent1)">1,040,991</div>
+      <div class="kpi-sub">Post-IRCA surge</div>
+    </div>
+    <div class="kpi-card c3">
+      <div class="kpi-label">Top Country FY 2022</div>
+      <div class="kpi-value" style="color:var(--accent3);font-size:1.1rem">Mexico</div>
+      <div class="kpi-sub">128,878 naturalizations</div>
+    </div>
+    <div class="kpi-card c5">
+      <div class="kpi-label">Top State FY 2022</div>
+      <div class="kpi-value" style="color:var(--accent5);font-size:1.1rem">California</div>
+      <div class="kpi-sub">181,995 naturalizations</div>
+    </div>
+  </div>
+
+  <div class="insight i2">
+    <strong>Asia Now the Largest Naturalizing Region:</strong> Asian-born immigrants accounted for
+    <strong>361,176</strong> naturalizations in FY 2022 — 37% of the total — surpassing North America for the
+    first time. India led with <strong>65,960</strong> new citizens; the Philippines contributed <strong>53,413</strong>.
+  </div>
+  <div class="insight i5 last">
+    <strong>Geographic Concentration:</strong> California, Texas, Florida, and New York together accounted for
+    over <strong>51%</strong> of all FY 2022 naturalizations. On a per-capita basis, New Jersey ranked #1 with
+    <strong>5,933</strong> naturalizations per million residents — nearly double the national rate of 2,881.
+  </div>
+
+  <div class="chart-grid single">
+    <div class="chart-card">
+      <h3>Persons who Received Citizenship by Year <span>1990–2022</span>
+        <span style="margin-left:12px;font-size:0.75rem;color:var(--accent3)">— — Refugees eligible for citizenship (arrived 5 yrs prior)</span>
+      </h3>
+      <div class="chart-wrap tall"><canvas id="natTimeline"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Naturalizations by Region <span>2013–2022</span></h3>
+      <div class="chart-wrap"><canvas id="natRegion"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Top 10 Countries <span>FY 2022</span></h3>
+      <div class="chart-wrap"><canvas id="natCountry"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:20px">
+    <h3>Top Countries — Detailed Table <span>FY 2022</span></h3>
+    <div class="table-wrap"><table id="natTable"></table></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Data source: U.S. Department of Homeland Security, Office of Homeland Security Statistics —
+  <em>Yearbook of Immigration Statistics FY 2022</em>. All figures are official DHS counts.
+</footer>
+
+<script src="charts.js"></script>
+</body>
+</html>
