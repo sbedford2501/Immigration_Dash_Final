@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,7 +7,6 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="data.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -133,10 +132,10 @@
 <body>
 
 <header>
-  <div class="header-flag">🇺🇸</div>
+  <div class="header-flag">ðŸ‡ºðŸ‡¸</div>
   <div class="header-text">
     <h1>Humanitarian Arrivals to the U.S. and Adjustment of Status Over Time</h1>
-    <p>Refugees · Asylum · Legal Permanent Residents · Naturalizations</p>
+    <p>Refugees Â· Asylum Â· Legal Permanent Residents Â· Naturalizations</p>
   </div>
   <div class="header-right">
     <div class="header-badge">Source: DHS / OHS Statistics</div>
@@ -160,31 +159,31 @@
 
 <main>
 
-<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <!-- OVERVIEW TAB                                                               -->
-<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="overview" class="tab-panel active">
   <div class="section-title">FY 2022 At a Glance</div>
 
   <div class="kpi-grid">
     <div class="kpi-card c1">
       <div class="kpi-label">Legal Permanent Residents</div>
-      <div class="kpi-value" id="kpi-lpr">—</div>
+      <div class="kpi-value" id="kpi-lpr">â€”</div>
       <div class="kpi-sub">Green cards issued</div>
     </div>
     <div class="kpi-card c2">
       <div class="kpi-label">Naturalizations</div>
-      <div class="kpi-value" id="kpi-nat">—</div>
+      <div class="kpi-value" id="kpi-nat">â€”</div>
       <div class="kpi-sub">New U.S. citizens</div>
     </div>
     <div class="kpi-card c3">
       <div class="kpi-label">Refugee Arrivals</div>
-      <div class="kpi-value" id="kpi-ref">—</div>
-      <div class="kpi-sub">~30% of 2016 peak · Admitted under Refugee Act</div>
+      <div class="kpi-value" id="kpi-ref">â€”</div>
+      <div class="kpi-sub">~30% of 2016 peak Â· Admitted under Refugee Act</div>
     </div>
     <div class="kpi-card c4">
       <div class="kpi-label">Asylum Granted</div>
-      <div class="kpi-value" id="kpi-asy">—</div>
+      <div class="kpi-value" id="kpi-asy">â€”</div>
       <div class="kpi-sub">Affirmative + defensive combined</div>
     </div>
   </div>
@@ -192,46 +191,46 @@
   <div class="insight">
     <strong>Key Trends:</strong> FY 2022 saw a broad rebound in immigration after the combined impact of
     <strong>COVID-19 travel restrictions</strong> and the <strong>Trump administration's</strong> historically low refugee ceiling of 18,000.
-    Legal permanent residents rose to <strong>1,018,349</strong> — up 37% from the FY 2020 low — and naturalizations
+    Legal permanent residents rose to <strong>1,018,349</strong> â€” up 37% from the FY 2020 low â€” and naturalizations
     reached <strong>969,380</strong>, the highest since 2008. Refugee admissions recovered to <strong>25,519</strong> under the
     Biden administration's raised ceiling of 125,000, but remain at roughly <strong>30% of the 2016 peak</strong> of 84,989,
     reflecting both processing backlogs and the lasting structural impact of years of reduced capacity.
-    Asylum grants surged to <strong>36,615</strong>, driven by a sharp rise in defensive court cases (22,481) —
+    Asylum grants surged to <strong>36,615</strong>, driven by a sharp rise in defensive court cases (22,481) â€”
     a direct consequence of the growing immigration court backlog built up during the prior administration.
   </div>
   <div class="insight i3 last">
-    <strong>Employment-Based Green Cards Surge:</strong> Employment-based LPRs hit a record <strong>270,284</strong> in FY 2022 —
-    nearly double FY 2019 — due to a one-time reallocation of unused family-preference visa numbers.
+    <strong>Employment-Based Green Cards Surge:</strong> Employment-based LPRs hit a record <strong>270,284</strong> in FY 2022 â€”
+    nearly double FY 2019 â€” due to a one-time reallocation of unused family-preference visa numbers.
     Asia now accounts for the largest share of both LPRs and new citizens, with India alone contributing
     <strong>127,012</strong> green cards and <strong>65,960</strong> naturalizations in FY 2022.
   </div>
 
   <div class="chart-grid">
     <div class="chart-card">
-      <h3>Persons who Received Green Cards by Year <span>2000–2022</span></h3>
+      <h3>Persons who Received Green Cards by Year <span>2000â€“2022</span></h3>
       <div class="chart-wrap"><canvas id="overviewLPR"></canvas></div>
     </div>
     <div class="chart-card">
-      <h3>Persons who Received Citizenship by Year <span>2000–2022</span></h3>
+      <h3>Persons who Received Citizenship by Year <span>2000â€“2022</span></h3>
       <div class="chart-wrap"><canvas id="overviewNat"></canvas></div>
     </div>
   </div>
 
   <div class="chart-grid">
     <div class="chart-card">
-      <h3>Refugee Arrivals <span>1980–2022</span></h3>
+      <h3>Refugee Arrivals <span>1980â€“2022</span></h3>
       <div class="chart-wrap"><canvas id="overviewRef"></canvas></div>
     </div>
     <div class="chart-card">
-      <h3>Asylum Granted <span>1990–2022</span></h3>
+      <h3>Asylum Granted <span>1990â€“2022</span></h3>
       <div class="chart-wrap"><canvas id="overviewAsy"></canvas></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <!-- REFUGEES TAB                                                               -->
-<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="refugees" class="tab-panel">
   <div class="section-title">Refugee Arrivals</div>
 
@@ -265,13 +264,13 @@
 
   <!-- Refugee spotlight -->
   <div class="spotlight">
-    <div class="spotlight-icon">🌟</div>
+    <div class="spotlight-icon">ðŸŒŸ</div>
     <div>
-      <h4>Spotlight: Hamdi Ulukaya — Founder of Chobani</h4>
+      <h4>Spotlight: Hamdi Ulukaya â€” Founder of Chobani</h4>
       <p>
         Hamdi Ulukaya arrived in the U.S. from Turkey in 1994 and founded <strong>Chobani</strong>, now the
-        best-selling Greek yogurt brand in America. His company employs over <strong>2,000 people</strong> —
-        many of them refugees — at plants in New York and Idaho. Ulukaya has pledged 10% of Chobani's equity
+        best-selling Greek yogurt brand in America. His company employs over <strong>2,000 people</strong> â€”
+        many of them refugees â€” at plants in New York and Idaho. Ulukaya has pledged 10% of Chobani's equity
         to refugee causes and is a leading voice for refugee employment. His story illustrates a consistent
         pattern: refugees who are given the opportunity to work become taxpayers, employers, and community
         builders. Studies show refugees reach income parity with native-born Americans within <strong>8 years</strong>
@@ -282,7 +281,7 @@
 
   <div class="insight i3">
     <strong>Africa Dominates Recent Arrivals:</strong> Since 2013, Africa has been the fastest-growing source region.
-    In FY 2016 — the peak year — Africa contributed <strong>31,640</strong> arrivals (37% of total).
+    In FY 2016 â€” the peak year â€” Africa contributed <strong>31,640</strong> arrivals (37% of total).
     The Democratic Republic of Congo alone accounted for <strong>7,742</strong> arrivals in FY 2022, driven by
     ongoing conflict in the eastern provinces.
   </div>
@@ -295,11 +294,11 @@
 
   <div class="chart-grid single">
     <div class="chart-card">
-      <h3>Refugee Arrivals by Year <span>1980–2022</span></h3>
+      <h3>Refugee Arrivals by Year <span>1980â€“2022</span></h3>
       <div class="chart-controls">
         <span style="font-size:0.78rem;color:var(--muted)">Overlay administration:</span>
-        <button class="toggle-btn" id="toggleDem">🔵 Democrat</button>
-        <button class="toggle-btn" id="toggleRep">🔴 Republican</button>
+        <button class="toggle-btn" id="toggleDem">ðŸ”µ Democrat</button>
+        <button class="toggle-btn" id="toggleRep">ðŸ”´ Republican</button>
         <span style="font-size:0.75rem;color:var(--muted);margin-left:4px" id="partyInsight"></span>
       </div>
       <div class="chart-wrap tall"><canvas id="refTimeline"></canvas></div>
@@ -307,7 +306,7 @@
   </div>
 
   <div class="insight i2 last" id="bipartisanInsight">
-    <strong>A Bipartisan Legacy — Until 2017:</strong> From 1980 through 2016, refugee resettlement was broadly
+    <strong>A Bipartisan Legacy â€” Until 2017:</strong> From 1980 through 2016, refugee resettlement was broadly
     bipartisan. Both Republican and Democratic administrations maintained admissions above <strong>50,000</strong> per year,
     with Reagan admitting over <strong>200,000</strong> in 1980 and Bush Jr. rebuilding the program after 9/11 to over
     <strong>70,000</strong> by 2008. The sharp break came in 2017, when the ceiling was cut to its lowest level since
@@ -316,7 +315,7 @@
 
   <div class="chart-grid">
     <div class="chart-card">
-      <h3>Arrivals by Region <span>2013–2022</span></h3>
+      <h3>Arrivals by Region <span>2013â€“2022</span></h3>
       <div class="chart-wrap"><canvas id="refRegion"></canvas></div>
     </div>
     <div class="chart-card">
@@ -326,21 +325,21 @@
   </div>
 
   <div class="chart-card" style="margin-bottom:20px">
-    <h3>Top Nationalities — Detailed Table <span>FY 2022</span></h3>
+    <h3>Top Nationalities â€” Detailed Table <span>FY 2022</span></h3>
     <div class="table-wrap"><table id="refTable"></table></div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <!-- ASYLUM TAB                                                                 -->
-<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="asylum" class="tab-panel">
   <div class="section-title">Asylum Cases Granted</div>
 
   <!-- Plain-language explainers -->
   <div class="explainer-grid">
     <div class="explainer-box aff">
-      <h4>✅ What is Affirmative Asylum?</h4>
+      <h4>âœ… What is Affirmative Asylum?</h4>
       <p>
         Someone who is <strong>not in removal proceedings</strong> can proactively apply for asylum by filing a form
         with U.S. Citizenship and Immigration Services (USCIS). An asylum officer interviews them and decides
@@ -349,10 +348,10 @@
       </p>
     </div>
     <div class="explainer-box def">
-      <h4>⚖️ What is Defensive Asylum?</h4>
+      <h4>âš–ï¸ What is Defensive Asylum?</h4>
       <p>
         Someone who is <strong>already in removal (deportation) proceedings</strong> can raise asylum as a
-        <em>defense</em> in immigration court — essentially saying "I can't be sent back because I would be
+        <em>defense</em> in immigration court â€” essentially saying "I can't be sent back because I would be
         persecuted." A judge decides the case. This process is slower and more adversarial. The sharp rise
         in defensive cases since 2018 reflects a growing backlog of people in court proceedings.
       </p>
@@ -384,7 +383,7 @@
 
   <!-- Country filter -->
   <div class="filter-row">
-    <label for="asyCountryFilter">🔍 Filter charts by country of origin:</label>
+    <label for="asyCountryFilter">ðŸ” Filter charts by country of origin:</label>
     <select id="asyCountryFilter">
       <option value="all">All Countries</option>
     </select>
@@ -394,26 +393,26 @@
   <div class="insight i5">
     <strong>Defensive Cases Now Dominate:</strong> For the first time in the data series, defensive grants
     (<strong>22,481</strong>) exceeded affirmative grants (<strong>14,134</strong>) by a ratio of nearly 3:2 in FY 2022.
-    This reflects a massive immigration court backlog — individuals in removal proceedings who might otherwise
+    This reflects a massive immigration court backlog â€” individuals in removal proceedings who might otherwise
     have applied affirmatively are instead forced to defend themselves in court.
   </div>
   <div class="insight i4 last">
     <strong>Latin America Surge:</strong> Venezuela emerged as the top affirmative asylum origin in FY 2022 with
     <strong>2,228</strong> grants, up from near zero a decade ago. Combined, Venezuela, Colombia, Guatemala,
-    El Salvador, and Honduras accounted for roughly <strong>35%</strong> of all affirmative grants — a dramatic
+    El Salvador, and Honduras accounted for roughly <strong>35%</strong> of all affirmative grants â€” a dramatic
     shift from the China-dominated pattern of the early 2010s.
   </div>
 
   <div class="chart-grid single">
     <div class="chart-card">
-      <h3>Asylum Granted — Affirmative vs Defensive <span>1990–2022</span></h3>
+      <h3>Asylum Granted â€” Affirmative vs Defensive <span>1990â€“2022</span></h3>
       <div class="chart-wrap tall"><canvas id="asyTimeline"></canvas></div>
     </div>
   </div>
 
   <div class="chart-grid">
     <div class="chart-card">
-      <h3>Top 10 Nationalities — Affirmative Asylum <span>FY 2022</span></h3>
+      <h3>Top 10 Nationalities â€” Affirmative Asylum <span>FY 2022</span></h3>
       <div class="chart-wrap"><canvas id="asyNat"></canvas></div>
     </div>
     <div class="chart-card">
@@ -423,14 +422,14 @@
   </div>
 
   <div class="chart-card" style="margin-bottom:20px">
-    <h3>Asylum Granted — Historical Table <span>1990–2022</span></h3>
+    <h3>Asylum Granted â€” Historical Table <span>1990â€“2022</span></h3>
     <div class="table-wrap"><table id="asyTable"></table></div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <!-- LPR TAB                                                                    -->
-<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="lpr" class="tab-panel">
   <div class="section-title">Legal Permanent Residents (Green Cards)</div>
 
@@ -459,18 +458,18 @@
       <div class="share-fill-ref" style="width:8.2%">8.2% Refugees &amp; Asylees</div>
     </div>
     <div class="share-legend">
-      <span><span class="swatch" style="background:var(--accent3)"></span>Refugees &amp; Asylees — 83,082 of 1,018,349 (8.2%)</span>
-      <span><span class="swatch" style="background:var(--border)"></span>All other categories — 935,267 (91.8%)</span>
+      <span><span class="swatch" style="background:var(--accent3)"></span>Refugees &amp; Asylees â€” 83,082 of 1,018,349 (8.2%)</span>
+      <span><span class="swatch" style="background:var(--border)"></span>All other categories â€” 935,267 (91.8%)</span>
     </div>
     <p style="font-size:0.78rem;color:var(--muted);margin-top:8px">
       Despite the public debate around refugee admissions, refugees and asylees who adjust to LPR status
       represent just <strong>8.2%</strong> of all green cards issued in FY 2022. Immediate relatives of U.S. citizens
-      alone account for <strong>42%</strong> — more than five times the refugee share.
+      alone account for <strong>42%</strong> â€” more than five times the refugee share.
     </p>
   </div>
 
   <div class="insight i1" style="border-left-color:var(--accent1)">
-    <strong>Employment-Based Admissions Surge:</strong> Employment-based LPRs reached <strong>270,284</strong> in FY 2022 —
+    <strong>Employment-Based Admissions Surge:</strong> Employment-based LPRs reached <strong>270,284</strong> in FY 2022 â€”
     the highest on record and nearly double FY 2019. This spike reflects a one-time reallocation of unused
     family-preference visa numbers. The EB-2 category alone jumped to <strong>109,081</strong>, driven heavily by
     Indian-born applicants (96,335 of that total).
@@ -479,23 +478,23 @@
     <strong>Immediate Relatives Remain the Largest Category:</strong> Spouses, children, and parents of U.S. citizens
     accounted for <strong>428,268</strong> green cards (42%) in FY 2022. Family-sponsored preference admissions
     collapsed to just <strong>65,690</strong> in FY 2021 due to COVID-era shutdowns, then partially rebounded to
-    <strong>166,041</strong> in FY 2022 — still below pre-pandemic levels.
+    <strong>166,041</strong> in FY 2022 â€” still below pre-pandemic levels.
   </div>
 
   <div class="chart-grid">
     <div class="chart-card">
-      <h3>Persons who Received Green Cards by Year <span>2000–2022</span></h3>
+      <h3>Persons who Received Green Cards by Year <span>2000â€“2022</span></h3>
       <div class="chart-wrap"><canvas id="lprTimeline"></canvas></div>
     </div>
     <div class="chart-card">
-      <h3>Class of Admission <span>2013–2022</span></h3>
+      <h3>Class of Admission <span>2013â€“2022</span></h3>
       <div class="chart-wrap"><canvas id="lprClass"></canvas></div>
     </div>
   </div>
 
   <div class="chart-grid">
     <div class="chart-card">
-      <h3>LPR by Region of Birth <span>2013–2022</span></h3>
+      <h3>LPR by Region of Birth <span>2013â€“2022</span></h3>
       <div class="chart-wrap"><canvas id="lprRegion"></canvas></div>
     </div>
     <div class="chart-card">
@@ -510,9 +509,9 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <!-- NATURALIZATION TAB                                                         -->
-<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="naturalization" class="tab-panel">
   <div class="section-title">Naturalizations (New U.S. Citizens)</div>
 
@@ -541,19 +540,19 @@
 
   <div class="insight i2">
     <strong>Asia Now the Largest Naturalizing Region:</strong> Asian-born immigrants accounted for
-    <strong>361,176</strong> naturalizations in FY 2022 — 37% of the total — surpassing North America for the
+    <strong>361,176</strong> naturalizations in FY 2022 â€” 37% of the total â€” surpassing North America for the
     first time. India led with <strong>65,960</strong> new citizens; the Philippines contributed <strong>53,413</strong>.
   </div>
   <div class="insight i5 last">
     <strong>Geographic Concentration:</strong> California, Texas, Florida, and New York together accounted for
     over <strong>51%</strong> of all FY 2022 naturalizations. On a per-capita basis, New Jersey ranked #1 with
-    <strong>5,933</strong> naturalizations per million residents — nearly double the national rate of 2,881.
+    <strong>5,933</strong> naturalizations per million residents â€” nearly double the national rate of 2,881.
   </div>
 
   <div class="chart-grid single">
     <div class="chart-card">
-      <h3>Persons who Received Citizenship by Year <span>1990–2022</span>
-        <span style="margin-left:12px;font-size:0.75rem;color:var(--accent3)">— — Refugees eligible for citizenship (arrived 5 yrs prior)</span>
+      <h3>Persons who Received Citizenship by Year <span>1990â€“2022</span>
+        <span style="margin-left:12px;font-size:0.75rem;color:var(--accent3)">â€” â€” Refugees eligible for citizenship (arrived 5 yrs prior)</span>
       </h3>
       <div class="chart-wrap tall"><canvas id="natTimeline"></canvas></div>
     </div>
@@ -561,7 +560,7 @@
 
   <div class="chart-grid">
     <div class="chart-card">
-      <h3>Naturalizations by Region <span>2013–2022</span></h3>
+      <h3>Naturalizations by Region <span>2013â€“2022</span></h3>
       <div class="chart-wrap"><canvas id="natRegion"></canvas></div>
     </div>
     <div class="chart-card">
@@ -571,7 +570,7 @@
   </div>
 
   <div class="chart-card" style="margin-bottom:20px">
-    <h3>Top Countries — Detailed Table <span>FY 2022</span></h3>
+    <h3>Top Countries â€” Detailed Table <span>FY 2022</span></h3>
     <div class="table-wrap"><table id="natTable"></table></div>
   </div>
 </section>
@@ -579,10 +578,883 @@
 </main>
 
 <footer>
-  Data source: U.S. Department of Homeland Security, Office of Homeland Security Statistics —
+  Data source: U.S. Department of Homeland Security, Office of Homeland Security Statistics â€”
   <em>Yearbook of Immigration Statistics FY 2022</em>. All figures are official DHS counts.
 </footer>
 
-<script src="charts.js"></script>
+<script>
+// Immigration Dashboard Data
+// Source: DHS Office of Homeland Security Statistics, FY2022 Yearbook
+
+const immigrationData = {
+
+  // â”€â”€ Refugee Arrivals 1980â€“2022 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  refugeeArrivals: [
+    {year:1980,total:207116},{year:1981,total:159252},{year:1982,total:98096},
+    {year:1983,total:61218},{year:1984,total:70393},{year:1985,total:67704},
+    {year:1986,total:62146},{year:1987,total:64528},{year:1988,total:76483},
+    {year:1989,total:107070},{year:1990,total:122066},{year:1991,total:113389},
+    {year:1992,total:115548},{year:1993,total:114181},{year:1994,total:111680},
+    {year:1995,total:98973},{year:1996,total:75421},{year:1997,total:69653},
+    {year:1998,total:76712},{year:1999,total:85285},{year:2000,total:72165},
+    {year:2001,total:68920},{year:2002,total:26785},{year:2003,total:28286},
+    {year:2004,total:52840},{year:2005,total:53738},{year:2006,total:41094},
+    {year:2007,total:48218},{year:2008,total:60107},{year:2009,total:74602},
+    {year:2010,total:73293},{year:2011,total:56384},{year:2012,total:58179},
+    {year:2013,total:69909},{year:2014,total:69975},{year:2015,total:69920},
+    {year:2016,total:84989},{year:2017,total:53691},{year:2018,total:22405},
+    {year:2019,total:29916},{year:2020,total:11840},{year:2021,total:11454},
+    {year:2022,total:25519}
+  ],
+
+  // â”€â”€ Presidential administrations (for shading) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // party: 'R' = Republican, 'D' = Democrat
+  administrations: [
+    {start:1980,end:1981,party:'D',name:'Carter'},
+    {start:1981,end:1989,party:'R',name:'Reagan'},
+    {start:1989,end:1993,party:'R',name:'Bush Sr.'},
+    {start:1993,end:2001,party:'D',name:'Clinton'},
+    {start:2001,end:2009,party:'R',name:'Bush Jr.'},
+    {start:2009,end:2017,party:'D',name:'Obama'},
+    {start:2017,end:2021,party:'R',name:'Trump'},
+    {start:2021,end:2022,party:'D',name:'Biden'}
+  ],
+
+  // â”€â”€ Refugee Arrivals by Region 2013â€“2022 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  refugeeByRegion: {
+    years: [2013,2014,2015,2016,2017,2018,2019,2020,2021,2022],
+    Africa:       [15990,17506,22497,31640,20251,10462,16373,4173,6259,11406],
+    Asia:         [48756,47165,43091,48268,26648,7524,7852,4235,3833,9469],
+    Europe:       [530,825,2178,3676,5019,3459,4850,2477,924,2139],
+    NorthAmerica: [4206,4067,1528,812,1456,827,511,712,349,2062],
+    SouthAmerica: [233,253,522,531,232,128,298,236,53,424]
+  },
+
+  // â”€â”€ Top refugee nationalities 2022 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  refugeeTopNationalities2022: [
+    {country:"Congo, Dem. Rep.",arrivals:7742},
+    {country:"Syria",arrivals:4562},
+    {country:"Burma",arrivals:2141},
+    {country:"Ukraine",arrivals:1586},
+    {country:"Sudan",arrivals:1665},
+    {country:"Afghanistan",arrivals:1619},
+    {country:"Somalia",arrivals:491},
+    {country:"El Salvador",arrivals:524},
+    {country:"Guatemala",arrivals:1084},
+    {country:"Honduras",arrivals:447}
+  ],
+
+  // â”€â”€ Asylum Granted (Affirmative + Defensive) 1990â€“2022 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  asylumGranted: [
+    {year:1990,total:8472,affirmative:5672,defensive:2800},
+    {year:1991,total:5035,affirmative:2908,defensive:2127},
+    {year:1992,total:6307,affirmative:4123,defensive:2184},
+    {year:1993,total:9543,affirmative:7509,defensive:2034},
+    {year:1994,total:13828,affirmative:11775,defensive:2053},
+    {year:1995,total:20703,affirmative:17573,defensive:3130},
+    {year:1996,total:23532,affirmative:18624,defensive:4908},
+    {year:1997,total:22939,affirmative:16380,defensive:6559},
+    {year:1998,total:20507,affirmative:13216,defensive:7291},
+    {year:1999,total:26571,affirmative:18150,defensive:8421},
+    {year:2000,total:32514,affirmative:23278,defensive:9236},
+    {year:2001,total:39148,affirmative:29147,defensive:10001},
+    {year:2002,total:36937,affirmative:25960,defensive:10977},
+    {year:2003,total:28743,affirmative:15367,defensive:13376},
+    {year:2004,total:27376,affirmative:14354,defensive:13022},
+    {year:2005,total:25304,affirmative:13547,defensive:11757},
+    {year:2006,total:26352,affirmative:13048,defensive:13304},
+    {year:2007,total:25318,affirmative:12459,defensive:12859},
+    {year:2008,total:23022,affirmative:12130,defensive:10892},
+    {year:2009,total:22303,affirmative:12003,defensive:10300},
+    {year:2010,total:19777,affirmative:11258,defensive:8519},
+    {year:2011,total:23631,affirmative:13493,defensive:10138},
+    {year:2012,total:27446,affirmative:16871,defensive:10575},
+    {year:2013,total:24631,affirmative:14886,defensive:9745},
+    {year:2014,total:23038,affirmative:14424,defensive:8614},
+    {year:2015,total:25946,affirmative:17807,defensive:8139},
+    {year:2016,total:20311,affirmative:11616,defensive:8695},
+    {year:2017,total:26382,affirmative:15817,defensive:10565},
+    {year:2018,total:37702,affirmative:24504,defensive:13198},
+    {year:2019,total:45805,affirmative:26893,defensive:18912},
+    {year:2020,total:30736,affirmative:16132,defensive:14604},
+    {year:2021,total:16628,affirmative:9212,defensive:7416},
+    {year:2022,total:36615,affirmative:14134,defensive:22481}
+  ],
+
+  // â”€â”€ Top affirmative asylum nationalities 2022 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  asylumTopNationalities2022: [
+    {country:"China",granted:1538},
+    {country:"Venezuela",granted:2228},
+    {country:"Turkey",granted:980},
+    {country:"Ethiopia",granted:582},
+    {country:"Afghanistan",granted:1438},
+    {country:"Russia",granted:450},
+    {country:"Colombia",granted:464},
+    {country:"Egypt",granted:683},
+    {country:"Guatemala",granted:328},
+    {country:"El Salvador",granted:300}
+  ],
+
+  // â”€â”€ LPR (Lawful Permanent Residents) 2000â€“2022 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  lprTotal: [
+    {year:2000,total:841002},{year:2001,total:1058902},{year:2002,total:1059356},
+    {year:2003,total:703542},{year:2004,total:957883},{year:2005,total:1122257},
+    {year:2006,total:1266129},{year:2007,total:1052415},{year:2008,total:1107126},
+    {year:2009,total:1130818},{year:2010,total:1042625},{year:2011,total:1062040},
+    {year:2012,total:1031631},{year:2013,total:990553},{year:2014,total:1016518},
+    {year:2015,total:1051031},{year:2016,total:1183505},{year:2017,total:1127167},
+    {year:2018,total:1096611},{year:2019,total:1031765},{year:2020,total:707362},
+    {year:2021,total:740002},{year:2022,total:1018349}
+  ],
+
+  // â”€â”€ LPR by class of admission 2013â€“2022 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  lprByClass: {
+    years: [2013,2014,2015,2016,2017,2018,2019,2020,2021,2022],
+    immediateRelatives: [439460,416456,465068,566706,516508,478961,505765,321148,385396,428268],
+    familySponsored:    [210303,229104,213910,238087,232238,216563,204139,121560,65690,166041],
+    employmentBased:    [161110,151596,144047,137893,137855,138171,139458,148959,193338,270284],
+    diversity:          [45618,53490,47934,49865,51592,45350,43463,25028,15145,43233],
+    refugeesAsylees:    [119630,134242,151995,157425,145003,185909,106911,63875,56397,83082]
+  },
+
+  // â”€â”€ LPR top countries of birth 2022 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  lprTopCountries2022: [
+    {country:"Mexico",total:138772},
+    {country:"India",total:127012},
+    {country:"China",total:67950},
+    {country:"Philippines",total:35998},
+    {country:"Cuba",total:36642},
+    {country:"Dominican Republic",total:40152},
+    {country:"El Salvador",total:30876},
+    {country:"Vietnam",total:24425},
+    {country:"Brazil",total:24169},
+    {country:"Honduras",total:17099}
+  ],
+
+  // â”€â”€ LPR by region of birth 2013â€“2022 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  lprByRegion: {
+    years: [2013,2014,2015,2016,2017,2018,2019,2020,2021,2022],
+    Africa:       [98304,98413,101415,113426,118824,115736,111194,76649,66211,89571],
+    Asia:         [400548,430508,419297,462299,424743,397187,364761,272597,295306,414951],
+    Europe:       [86556,83266,85803,93567,84335,80024,87597,68994,61521,75606],
+    NorthAmerica: [315660,324354,366126,427293,413650,418991,370860,222272,240435,332672],
+    SouthAmerica: [80945,73715,72309,79608,79076,78869,90850,62219,71371,99025],
+    Oceania:      [5277,5112,5404,5588,5071,4653,5359,3998,4147,5132]
+  },
+
+  // â”€â”€ Naturalizations 1990â€“2022 (selected years) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  naturalizations: [
+    {year:1990,total:267586},{year:1995,total:485720},{year:1996,total:1040991},
+    {year:2000,total:886026},{year:2005,total:604280},{year:2008,total:1046539},
+    {year:2010,total:619913},{year:2011,total:694193},{year:2012,total:757434},
+    {year:2013,total:779929},{year:2014,total:653416},{year:2015,total:730259},
+    {year:2016,total:753060},{year:2017,total:707265},{year:2018,total:761901},
+    {year:2019,total:843593},{year:2020,total:628254},{year:2021,total:813861},
+    {year:2022,total:969380}
+  ],
+
+  // â”€â”€ Naturalizations by region 2013â€“2022 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  naturalizationsByRegion: {
+    years: [2013,2014,2015,2016,2017,2018,2019,2020,2021,2022],
+    Africa:       [71872,62175,71492,72339,61864,64999,85014,66450,76009,106094],
+    Asia:         [275700,233163,261374,271733,255382,275822,327434,246215,295224,361176],
+    Europe:       [80333,71325,78074,74345,65166,71483,81051,57410,77085,92242],
+    NorthAmerica: [271807,222547,247492,259845,258394,277822,276969,204269,288431,324409],
+    SouthAmerica: [76167,60665,67927,70821,63065,67934,68687,50442,72701,79982]
+  },
+
+  // â”€â”€ Top naturalization countries 2022 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  naturalizationTopCountries2022: [
+    {country:"Mexico",total:128878},
+    {country:"India",total:65960},
+    {country:"Philippines",total:53413},
+    {country:"Cuba",total:46913},
+    {country:"Dominican Republic",total:34525},
+    {country:"Vietnam",total:33246},
+    {country:"China",total:27038},
+    {country:"El Salvador",total:21453},
+    {country:"Jamaica",total:22963},
+    {country:"Colombia",total:18089}
+  ],
+
+  // â”€â”€ Top states for LPR 2022 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  lprByState2022: [
+    {state:"California",total:182921},
+    {state:"Florida",total:113653},
+    {state:"New York",total:111309},
+    {state:"Texas",total:109720},
+    {state:"New Jersey",total:54958},
+    {state:"Illinois",total:34551},
+    {state:"Washington",total:31835},
+    {state:"Massachusetts",total:32885},
+    {state:"Virginia",total:28902},
+    {state:"Georgia",total:26312},
+    {state:"Maryland",total:24233},
+    {state:"Pennsylvania",total:28381}
+  ],
+
+  // â”€â”€ Summary KPIs 2022 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  kpi2022: {
+    lpr: 1018349,
+    naturalizations: 969380,
+    refugees: 25519,
+    asylumGranted: 36615,
+    asylumAffirmative: 14134,
+    asylumDefensive: 22481
+  }
+};
+
+</script>
+<script>
+// â”€â”€ Global defaults â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+Chart.defaults.color = '#8892a4';
+Chart.defaults.borderColor = '#2e3350';
+Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+Chart.defaults.font.size = 11;
+
+const COLORS = {
+  blue:'#4f8ef7', green:'#34d399', amber:'#f59e0b', red:'#f87171',
+  purple:'#a78bfa', orange:'#fb923c', teal:'#2dd4bf', pink:'#f472b6',
+  lime:'#a3e635', sky:'#38bdf8'
+};
+const REGION_COLORS = {
+  Africa:COLORS.amber, Asia:COLORS.blue, Europe:COLORS.purple,
+  NorthAmerica:COLORS.green, SouthAmerica:COLORS.orange, Oceania:COLORS.teal
+};
+
+// â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const fmt     = n => n >= 1e6 ? (n/1e6).toFixed(2)+'M' : n >= 1e3 ? (n/1e3).toFixed(0)+'K' : n.toLocaleString();
+const fmtFull = n => n.toLocaleString();
+function hexAlpha(hex, a) {
+  const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+function lineDataset(label, data, color, fill=false, extra={}) {
+  return { label, data, borderColor:color, backgroundColor:fill?hexAlpha(color,.15):'transparent',
+    borderWidth:2, pointRadius:3, pointHoverRadius:5, tension:0.3, fill, ...extra };
+}
+function barDataset(label, data, color) {
+  return { label, data, backgroundColor:hexAlpha(color,.8), borderColor:color, borderWidth:1, borderRadius:3 };
+}
+
+const TT = {
+  plugins: {
+    tooltip: {
+      backgroundColor:'#1a1d27', borderColor:'#2e3350', borderWidth:1,
+      titleColor:'#e2e8f0', bodyColor:'#8892a4', padding:10,
+      callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y != null ? ctx.parsed.y.toLocaleString() : ''}` }
+    },
+    legend:{ labels:{ boxWidth:12, padding:16 } }
+  }
+};
+const NO_LEGEND = { plugins:{ ...TT.plugins, legend:{ display:false } } };
+
+const baseScales = {
+  x:{ grid:{ color:'#2e3350' }, ticks:{ maxRotation:45 } },
+  y:{ grid:{ color:'#2e3350' }, ticks:{ callback: v => fmt(v) } }
+};
+
+// â”€â”€ Tab navigation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+document.querySelectorAll('#nav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#nav button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+// â”€â”€ KPI Cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const k = immigrationData.kpi2022;
+document.getElementById('kpi-lpr').textContent = k.lpr.toLocaleString();
+document.getElementById('kpi-nat').textContent = k.naturalizations.toLocaleString();
+document.getElementById('kpi-ref').textContent = k.refugees.toLocaleString();
+document.getElementById('kpi-asy').textContent = k.asylumGranted.toLocaleString();
+
+// â”€â”€ Annotation plugin helper (inline, no external dep) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// We draw high/low labels using Chart.js afterDraw plugin per chart instance.
+function highLowPlugin(data, color) {
+  const vals = data.map(d => d.total ?? d);
+  const maxVal = Math.max(...vals), minVal = Math.min(...vals);
+  const maxIdx = vals.indexOf(maxVal), minIdx = vals.indexOf(minVal);
+  return {
+    id: 'highLow',
+    afterDatasetsDraw(chart) {
+      const { ctx, scales:{ x, y } } = chart;
+      [[maxIdx, maxVal, 'â–² High'], [minIdx, minVal, 'â–¼ Low']].forEach(([idx, val, lbl]) => {
+        const xPos = x.getPixelForIndex(idx);
+        const yPos = y.getPixelForValue(val);
+        ctx.save();
+        ctx.fillStyle = color;
+        ctx.font = 'bold 10px Segoe UI, sans-serif';
+        ctx.textAlign = 'center';
+        const isHigh = lbl.includes('High');
+        ctx.fillText(`${lbl}: ${fmt(val)}`, xPos, yPos + (isHigh ? -8 : 14));
+        ctx.restore();
+      });
+    }
+  };
+}
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// OVERVIEW CHARTS
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+
+// LPR overview â€” no legend, high/low labels
+const lprData = immigrationData.lprTotal;
+new Chart(document.getElementById('overviewLPR'), {
+  type: 'line',
+  data: {
+    labels: lprData.map(d => d.year),
+    datasets: [lineDataset('Green Cards', lprData.map(d => d.total), COLORS.blue, true)]
+  },
+  options: { responsive:true, maintainAspectRatio:false, scales:baseScales, ...NO_LEGEND },
+  plugins: [highLowPlugin(lprData, COLORS.blue)]
+});
+
+// Naturalizations overview â€” no legend, high/low labels, full range 2000â€“2022
+const natAll = immigrationData.naturalizations.filter(d => d.year >= 2000);
+new Chart(document.getElementById('overviewNat'), {
+  type: 'bar',
+  data: {
+    labels: natAll.map(d => d.year),
+    datasets: [barDataset('Naturalizations', natAll.map(d => d.total), COLORS.green)]
+  },
+  options: { responsive:true, maintainAspectRatio:false, scales:baseScales, ...NO_LEGEND },
+  plugins: [highLowPlugin(natAll, COLORS.green)]
+});
+
+// Refugee overview
+new Chart(document.getElementById('overviewRef'), {
+  type: 'line',
+  data: {
+    labels: immigrationData.refugeeArrivals.map(d => d.year),
+    datasets: [lineDataset('Refugee Arrivals', immigrationData.refugeeArrivals.map(d => d.total), COLORS.amber, true)]
+  },
+  options: { responsive:true, maintainAspectRatio:false, scales:baseScales, ...TT }
+});
+
+// Asylum overview
+new Chart(document.getElementById('overviewAsy'), {
+  type: 'line',
+  data: {
+    labels: immigrationData.asylumGranted.map(d => d.year),
+    datasets: [
+      lineDataset('Total Granted', immigrationData.asylumGranted.map(d => d.total), COLORS.red, true),
+      lineDataset('Affirmative',   immigrationData.asylumGranted.map(d => d.affirmative), COLORS.purple),
+      lineDataset('Defensive',     immigrationData.asylumGranted.map(d => d.defensive), COLORS.orange)
+    ]
+  },
+  options: { responsive:true, maintainAspectRatio:false, scales:baseScales, ...TT }
+});
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// REFUGEE CHARTS
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+
+const refData  = immigrationData.refugeeArrivals;
+const refYears = refData.map(d => d.year);
+const refVals  = refData.map(d => d.total);
+const refAvg   = Math.round(refVals.reduce((a,b) => a+b, 0) / refVals.length);
+
+// Administration shading plugin
+let showDem = false, showRep = false;
+
+function adminShadingPlugin() {
+  return {
+    id: 'adminShading',
+    beforeDraw(chart) {
+      if (!showDem && !showRep) return;
+      const { ctx, scales:{ x, y } } = chart;
+      const top = y.top, bottom = y.bottom;
+      immigrationData.administrations.forEach(adm => {
+        if (adm.party === 'D' && !showDem) return;
+        if (adm.party === 'R' && !showRep) return;
+        const startIdx = refYears.indexOf(adm.start);
+        const endIdx   = refYears.indexOf(Math.min(adm.end, refYears[refYears.length-1]));
+        if (startIdx < 0) return;
+        const x1 = x.getPixelForIndex(Math.max(startIdx, 0));
+        const x2 = x.getPixelForIndex(Math.min(endIdx >= 0 ? endIdx : refYears.length-1, refYears.length-1));
+        ctx.save();
+        ctx.fillStyle = adm.party === 'D' ? 'rgba(79,142,247,0.12)' : 'rgba(248,113,113,0.12)';
+        ctx.fillRect(x1, top, x2 - x1, bottom - top);
+        ctx.fillStyle = adm.party === 'D' ? 'rgba(79,142,247,0.7)' : 'rgba(248,113,113,0.7)';
+        ctx.font = '9px Segoe UI, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(adm.name, (x1+x2)/2, top + 10);
+        ctx.restore();
+      });
+    }
+  };
+}
+
+const refChart = new Chart(document.getElementById('refTimeline'), {
+  type: 'bar',
+  data: {
+    labels: refYears,
+    datasets: [
+      barDataset('Refugee Arrivals', refVals, COLORS.amber),
+      {
+        label: `Average (${fmt(refAvg)})`,
+        data: refYears.map(() => refAvg),
+        type: 'line',
+        borderColor: COLORS.teal,
+        borderWidth: 2,
+        borderDash: [6, 4],
+        pointRadius: 0,
+        fill: false,
+        tension: 0
+      }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    scales: baseScales,
+    plugins: {
+      ...TT.plugins,
+      legend: { display: false }
+    }
+  },
+  plugins: [adminShadingPlugin()]
+});
+
+// Toggle buttons
+document.getElementById('toggleDem').addEventListener('click', function() {
+  showDem = !showDem;
+  this.classList.toggle('active-dem', showDem);
+  refChart.update();
+});
+document.getElementById('toggleRep').addEventListener('click', function() {
+  showRep = !showRep;
+  this.classList.toggle('active-rep', showRep);
+  refChart.update();
+});
+
+// By region stacked
+const rr = immigrationData.refugeeByRegion;
+new Chart(document.getElementById('refRegion'), {
+  type: 'bar',
+  data: {
+    labels: rr.years,
+    datasets: [
+      barDataset('Africa',        rr.Africa,       REGION_COLORS.Africa),
+      barDataset('Asia',          rr.Asia,         REGION_COLORS.Asia),
+      barDataset('Europe',        rr.Europe,       REGION_COLORS.Europe),
+      barDataset('North America', rr.NorthAmerica, REGION_COLORS.NorthAmerica),
+      barDataset('South America', rr.SouthAmerica, REGION_COLORS.SouthAmerica)
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    scales:{ ...baseScales, x:{...baseScales.x,stacked:true}, y:{...baseScales.y,stacked:true} },
+    ...TT
+  }
+});
+
+// Top nationalities
+const rn = immigrationData.refugeeTopNationalities2022;
+new Chart(document.getElementById('refNat'), {
+  type: 'bar',
+  data: {
+    labels: rn.map(d => d.country),
+    datasets: [barDataset('Arrivals', rn.map(d => d.arrivals), COLORS.amber)]
+  },
+  options: {
+    indexAxis:'y', responsive:true, maintainAspectRatio:false,
+    scales:{ x:{grid:{color:'#2e3350'},ticks:{callback:v=>fmt(v)}}, y:{grid:{color:'#2e3350'}} },
+    ...NO_LEGEND
+  }
+});
+
+// Refugee table
+(function() {
+  const t = document.getElementById('refTable');
+  const max = Math.max(...rn.map(d => d.arrivals));
+  t.innerHTML = `<thead><tr><th>#</th><th>Country</th><th class="num">Arrivals</th><th>Share</th></tr></thead>`;
+  const tb = document.createElement('tbody');
+  rn.forEach((d,i) => {
+    const pct = ((d.arrivals/25519)*100).toFixed(1);
+    const w = Math.round((d.arrivals/max)*120);
+    tb.innerHTML += `<tr><td>${i+1}</td><td>${d.country}</td><td class="num">${fmtFull(d.arrivals)}</td>
+      <td><div class="bar-cell"><div class="mini-bar" style="width:${w}px;background:${COLORS.amber}"></div><span>${pct}%</span></div></td></tr>`;
+  });
+  t.appendChild(tb);
+})();
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ASYLUM CHARTS  â€” with country filter
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+
+const asyData = immigrationData.asylumGranted;
+const asyNatData = immigrationData.asylumTopNationalities2022;
+
+// Populate country filter dropdown
+const asyFilter = document.getElementById('asyCountryFilter');
+const asyCountries = [...new Set(asyNatData.map(d => d.country))].sort();
+asyCountries.forEach(c => {
+  const opt = document.createElement('option');
+  opt.value = c; opt.textContent = c;
+  asyFilter.appendChild(opt);
+});
+
+// Timeline chart (uses full historical data â€” filter shows note only)
+const asyTimelineChart = new Chart(document.getElementById('asyTimeline'), {
+  type: 'line',
+  data: {
+    labels: asyData.map(d => d.year),
+    datasets: [
+      { label:'Affirmative', data:asyData.map(d=>d.affirmative), borderColor:COLORS.purple,
+        backgroundColor:hexAlpha(COLORS.purple,.3), borderWidth:2, pointRadius:3, tension:0.3, fill:true },
+      { label:'Defensive',   data:asyData.map(d=>d.defensive),   borderColor:COLORS.orange,
+        backgroundColor:hexAlpha(COLORS.orange,.3), borderWidth:2, pointRadius:3, tension:0.3, fill:true }
+    ]
+  },
+  options:{ responsive:true, maintainAspectRatio:false, scales:baseScales, ...TT }
+});
+
+// Nationality bar chart (filterable)
+let asyNatChart = new Chart(document.getElementById('asyNat'), {
+  type: 'bar',
+  data: {
+    labels: asyNatData.map(d => d.country),
+    datasets: [barDataset('Affirmative Grants', asyNatData.map(d => d.granted), COLORS.purple)]
+  },
+  options: {
+    indexAxis:'y', responsive:true, maintainAspectRatio:false,
+    scales:{ x:{grid:{color:'#2e3350'},ticks:{callback:v=>fmt(v)}}, y:{grid:{color:'#2e3350'}} },
+    ...NO_LEGEND
+  }
+});
+
+// Pie chart
+const asyPieChart = new Chart(document.getElementById('asyPie'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Affirmative (USCIS)', 'Defensive (Courts)'],
+    datasets: [{
+      data: [14134, 22481],
+      backgroundColor: [hexAlpha(COLORS.purple,.8), hexAlpha(COLORS.orange,.8)],
+      borderColor: [COLORS.purple, COLORS.orange], borderWidth:2
+    }]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      tooltip:{ backgroundColor:'#1a1d27', borderColor:'#2e3350', borderWidth:1,
+        titleColor:'#e2e8f0', bodyColor:'#8892a4', padding:10,
+        callbacks:{ label: ctx => ` ${ctx.label}: ${ctx.parsed.toLocaleString()}` } },
+      legend:{ position:'bottom', labels:{ boxWidth:12, padding:16 } }
+    }
+  }
+});
+
+// Filter handler â€” filters the nationality bar chart and shows a note
+asyFilter.addEventListener('change', function() {
+  const val = this.value;
+  const note = document.getElementById('asyFilterNote');
+  let filtered;
+  if (val === 'all') {
+    filtered = asyNatData;
+    note.textContent = '';
+  } else {
+    filtered = asyNatData.filter(d => d.country === val);
+    note.textContent = filtered.length ? `Showing ${val} â€” ${filtered[0].granted.toLocaleString()} affirmative grants in FY 2022` : 'No data for selected country in top-10.';
+  }
+  asyNatChart.data.labels = filtered.map(d => d.country);
+  asyNatChart.data.datasets[0].data = filtered.map(d => d.granted);
+  asyNatChart.update();
+});
+
+// Asylum table
+(function() {
+  const t = document.getElementById('asyTable');
+  const rows = asyData.slice().reverse();
+  t.innerHTML = `<thead><tr><th>Year</th><th class="num">Total</th><th class="num">Affirmative</th><th class="num">Defensive</th><th>Aff. Share</th></tr></thead>`;
+  const tb = document.createElement('tbody');
+  rows.forEach(d => {
+    const pct = ((d.affirmative/d.total)*100).toFixed(1);
+    const w = Math.round((d.affirmative/d.total)*80);
+    tb.innerHTML += `<tr><td>${d.year}</td><td class="num">${fmtFull(d.total)}</td>
+      <td class="num">${fmtFull(d.affirmative)}</td><td class="num">${fmtFull(d.defensive)}</td>
+      <td><div class="bar-cell"><div class="mini-bar" style="width:${w}px;background:${COLORS.purple}"></div><span>${pct}%</span></div></td></tr>`;
+  });
+  t.appendChild(tb);
+})();
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// LPR CHARTS
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+
+// Timeline â€” no legend
+const lprTimelineData = immigrationData.lprTotal;
+new Chart(document.getElementById('lprTimeline'), {
+  type: 'line',
+  data: {
+    labels: lprTimelineData.map(d => d.year),
+    datasets: [lineDataset('Green Cards', lprTimelineData.map(d => d.total), COLORS.blue, true)]
+  },
+  options: { responsive:true, maintainAspectRatio:false, scales:baseScales, ...NO_LEGEND }
+});
+
+// Class of admission stacked
+const lc = immigrationData.lprByClass;
+new Chart(document.getElementById('lprClass'), {
+  type: 'bar',
+  data: {
+    labels: lc.years,
+    datasets: [
+      barDataset('Immediate Relatives', lc.immediateRelatives, COLORS.blue),
+      barDataset('Family Sponsored',    lc.familySponsored,    COLORS.green),
+      barDataset('Employment Based',    lc.employmentBased,    COLORS.amber),
+      barDataset('Diversity',           lc.diversity,          COLORS.purple),
+      barDataset('Refugees/Asylees',    lc.refugeesAsylees,    COLORS.red)
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    scales:{ ...baseScales, x:{...baseScales.x,stacked:true}, y:{...baseScales.y,stacked:true} },
+    ...TT
+  }
+});
+
+// By region
+const lr = immigrationData.lprByRegion;
+new Chart(document.getElementById('lprRegion'), {
+  type: 'line',
+  data: {
+    labels: lr.years,
+    datasets: [
+      lineDataset('Africa',        lr.Africa,       REGION_COLORS.Africa),
+      lineDataset('Asia',          lr.Asia,         REGION_COLORS.Asia),
+      lineDataset('Europe',        lr.Europe,       REGION_COLORS.Europe),
+      lineDataset('North America', lr.NorthAmerica, REGION_COLORS.NorthAmerica),
+      lineDataset('South America', lr.SouthAmerica, REGION_COLORS.SouthAmerica)
+    ]
+  },
+  options:{ responsive:true, maintainAspectRatio:false, scales:baseScales, ...TT }
+});
+
+// Top countries
+const lc2 = immigrationData.lprTopCountries2022;
+new Chart(document.getElementById('lprCountry'), {
+  type: 'bar',
+  data: {
+    labels: lc2.map(d => d.country),
+    datasets: [barDataset('LPR Admissions', lc2.map(d => d.total), COLORS.blue)]
+  },
+  options: {
+    indexAxis:'y', responsive:true, maintainAspectRatio:false,
+    scales:{ x:{grid:{color:'#2e3350'},ticks:{callback:v=>fmt(v)}}, y:{grid:{color:'#2e3350'}} },
+    ...NO_LEGEND
+  }
+});
+
+// State table
+(function() {
+  const t = document.getElementById('lprStateTable');
+  const data = immigrationData.lprByState2022.sort((a,b) => b.total - a.total);
+  const max = data[0].total;
+  t.innerHTML = `<thead><tr><th>#</th><th>State</th><th class="num">LPR Admissions</th><th>Share of Total</th></tr></thead>`;
+  const tb = document.createElement('tbody');
+  data.forEach((d,i) => {
+    const pct = ((d.total/1018349)*100).toFixed(1);
+    const w = Math.round((d.total/max)*140);
+    tb.innerHTML += `<tr><td>${i+1}</td><td>${d.state}</td><td class="num">${fmtFull(d.total)}</td>
+      <td><div class="bar-cell"><div class="mini-bar" style="width:${w}px;background:${COLORS.blue}"></div><span>${pct}%</span></div></td></tr>`;
+  });
+  t.appendChild(tb);
+})();
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// NATURALIZATION CHARTS
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+
+// Build refugee-eligible-for-citizenship overlay:
+// Refugees become eligible after 5 years as LPR (1 yr to LPR + 5 yr wait = ~6 yrs after arrival).
+// We use a simplified model: refugees who arrived in year Y are eligible to naturalize in year Y+6.
+// We map this onto the naturalization chart years.
+const natYears = immigrationData.naturalizations.map(d => d.year);
+const refByYear = {};
+immigrationData.refugeeArrivals.forEach(d => { refByYear[d.year] = d.total; });
+
+// For each naturalization year, look up refugee arrivals 6 years prior
+const refEligible = natYears.map(yr => {
+  const arrivalYr = yr - 6;
+  return refByYear[arrivalYr] || null;
+});
+
+// Naturalizations timeline â€” no legend, with refugee eligible dotted overlay
+new Chart(document.getElementById('natTimeline'), {
+  type: 'line',
+  data: {
+    labels: natYears,
+    datasets: [
+      {
+        label: 'Persons who Received Citizenship',
+        data: immigrationData.naturalizations.map(d => d.total),
+        borderColor: COLORS.green,
+        backgroundColor: hexAlpha(COLORS.green, 0.15),
+        borderWidth: 2, pointRadius: 3, tension: 0.3, fill: true
+      },
+      {
+        label: 'Refugees eligible for citizenship that year (arrived ~6 yrs prior)',
+        data: refEligible,
+        borderColor: COLORS.amber,
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        borderDash: [6, 4],
+        pointRadius: 4,
+        pointStyle: 'circle',
+        pointBackgroundColor: COLORS.amber,
+        tension: 0.3,
+        fill: false
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: baseScales,
+    plugins: {
+      tooltip: {
+        backgroundColor:'#1a1d27', borderColor:'#2e3350', borderWidth:1,
+        titleColor:'#e2e8f0', bodyColor:'#8892a4', padding:10,
+        callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y != null ? ctx.parsed.y.toLocaleString() : 'N/A'}` }
+      },
+      legend: {
+        display: true,
+        labels: {
+          boxWidth: 14, padding: 14,
+          generateLabels(chart) {
+            return chart.data.datasets.map((ds, i) => ({
+              text: ds.label,
+              fillStyle: ds.borderColor,
+              strokeStyle: ds.borderColor,
+              lineWidth: 2,
+              lineDash: ds.borderDash || [],
+              hidden: false,
+              datasetIndex: i
+            }));
+          }
+        }
+      }
+    }
+  }
+});
+
+// By region stacked
+const nr = immigrationData.naturalizationsByRegion;
+new Chart(document.getElementById('natRegion'), {
+  type: 'bar',
+  data: {
+    labels: nr.years,
+    datasets: [
+      barDataset('Africa',        nr.Africa,       REGION_COLORS.Africa),
+      barDataset('Asia',          nr.Asia,         REGION_COLORS.Asia),
+      barDataset('Europe',        nr.Europe,       REGION_COLORS.Europe),
+      barDataset('North America', nr.NorthAmerica, REGION_COLORS.NorthAmerica),
+      barDataset('South America', nr.SouthAmerica, REGION_COLORS.SouthAmerica)
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    scales:{ ...baseScales, x:{...baseScales.x,stacked:true}, y:{...baseScales.y,stacked:true} },
+    ...TT
+  }
+});
+
+// Top countries
+const nc = immigrationData.naturalizationTopCountries2022;
+new Chart(document.getElementById('natCountry'), {
+  type: 'bar',
+  data: {
+    labels: nc.map(d => d.country),
+    datasets: [barDataset('Naturalizations', nc.map(d => d.total), COLORS.green)]
+  },
+  options: {
+    indexAxis:'y', responsive:true, maintainAspectRatio:false,
+    scales:{ x:{grid:{color:'#2e3350'},ticks:{callback:v=>fmt(v)}}, y:{grid:{color:'#2e3350'}} },
+    ...NO_LEGEND
+  }
+});
+
+// Naturalization table
+(function() {
+  const t = document.getElementById('natTable');
+  const data = nc.slice().sort((a,b) => b.total - a.total);
+  const max = data[0].total;
+  t.innerHTML = `<thead><tr><th>#</th><th>Country</th><th class="num">Naturalizations</th><th>Share</th></tr></thead>`;
+  const tb = document.createElement('tbody');
+  data.forEach((d,i) => {
+    const pct = ((d.total/969380)*100).toFixed(1);
+    const w = Math.round((d.total/max)*130);
+    tb.innerHTML += `<tr><td>${i+1}</td><td>${d.country}</td><td class="num">${fmtFull(d.total)}</td>
+      <td><div class="bar-cell"><div class="mini-bar" style="width:${w}px;background:${COLORS.green}"></div><span>${pct}%</span></div></td></tr>`;
+  });
+  t.appendChild(tb);
+})();
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// PDF EXPORT
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+document.getElementById('exportPDF').addEventListener('click', async () => {
+  const btn = document.getElementById('exportPDF');
+  const labelEl = document.getElementById('exportLabel');
+  const iconEl  = document.getElementById('exportIcon');
+  btn.classList.add('loading');
+  labelEl.textContent = 'Building PDFâ€¦';
+  iconEl.classList.add('spin');
+
+  try {
+    const { jsPDF } = window.jspdf;
+    const PAGE_W = 297, PAGE_H = 210, MARGIN = 10, CONTENT_W = PAGE_W - MARGIN * 2;
+    const activeTab = document.querySelector('.tab-panel.active');
+    const activeBtn = document.querySelector('#nav button.active');
+    const tabLabel  = activeBtn ? activeBtn.textContent.trim() : 'Dashboard';
+    const pdf = new jsPDF({ orientation:'landscape', unit:'mm', format:'a4' });
+
+    function drawHeader(pdf, title, pageNum) {
+      pdf.setFillColor(26,29,39);
+      pdf.rect(0,0,PAGE_W,14,'F');
+      pdf.setTextColor(226,232,240); pdf.setFontSize(9); pdf.setFont('helvetica','bold');
+      pdf.text('Humanitarian Arrivals to the U.S. and Adjustment of Status Over Time', MARGIN, 9);
+      pdf.setFont('helvetica','normal'); pdf.setTextColor(136,146,164);
+      pdf.text(title, PAGE_W/2, 9, { align:'center' });
+      pdf.text(`Page ${pageNum}  |  Source: DHS / OHS Statistics`, PAGE_W-MARGIN, 9, { align:'right' });
+    }
+
+    async function capture(el) {
+      const canvas = await html2canvas(el, { scale:2, useCORS:true, backgroundColor:'#1a1d27', logging:false, windowWidth:1400 });
+      return { dataUrl:canvas.toDataURL('image/png'), w:canvas.width, h:canvas.height };
+    }
+
+    const blocks = Array.from(activeTab.querySelectorAll('.kpi-grid,.insight,.explainer-grid,.spotlight,.refugee-share-bar,.chart-card,.filter-row'));
+    let pageNum = 1, cursorY = 16;
+    drawHeader(pdf, tabLabel, pageNum);
+
+    for (const block of blocks) {
+      if (!block.offsetParent && block.offsetHeight === 0) continue;
+      const img = await capture(block);
+      const imgH = CONTENT_W * (img.h / img.w);
+      if (cursorY + imgH > PAGE_H - MARGIN) {
+        pdf.addPage(); pageNum++; cursorY = 16;
+        drawHeader(pdf, tabLabel, pageNum);
+      }
+      pdf.addImage(img.dataUrl, 'PNG', MARGIN, cursorY, CONTENT_W, imgH);
+      cursorY += imgH + 4;
+    }
+
+    pdf.save(`Humanitarian_Dashboard_${tabLabel.replace(/\s+/g,'_').slice(0,40)}_FY2022.pdf`);
+  } catch(err) {
+    console.error('PDF export failed:', err);
+    alert('PDF export failed. Please try again.');
+  } finally {
+    btn.classList.remove('loading');
+    labelEl.textContent = 'Export PDF';
+    iconEl.classList.remove('spin');
+  }
+});
+
+</script>
 </body>
 </html>
+
